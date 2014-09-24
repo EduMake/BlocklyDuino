@@ -2,10 +2,18 @@
 <head>
   <meta charset="utf-8">
   <title>Blockly Demo: Arduino</title>
-  <!--script type="text/javascript" src="../blockly_compressed.js"></script-->
+  
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.0.2.min.js"></script>
+  
+  <script type="text/javascript" src="//codebender.cc/embed/compilerflasher.js"></script>
+  
+  <!--script type="text/javascript" src="../blockly_uncompressed.js"></script-->
   <script type="text/javascript" src="Blob.js"></script>
   <script type="text/javascript" src="FileSaver.min.js"></script>
   <script type="text/javascript" src="blockly_helper.js"></script>
+  
+  
+  
   <script>
   // Whitelist of blocks to keep.
   /*var newLanguage = {}
@@ -265,15 +273,19 @@ function init(blockly) {
             <td class="tabmin">&nbsp;</td>
             <td id="tab_python" class="taboff" onclick="tabClick(this.id)">Python</td>
             <td class="tabmin">&nbsp;</td-->
-            <td id="tab_arduino" class="taboff" onclick="tabClick(this.id)">Arduino</td>
+            <td id="tab_arduino" class="taboff" onclick="tabClick(this.id)">Arduino - Code</td>
             <td class="tabmin">&nbsp;</td>
+            <td id="tab_codebender" class="taboff" onclick="tabClick(this.id)">Arduino - Setup</td>
+            <td class="tabmin">&nbsp;</td>
+            
+            
             <td id="tab_xml" class="taboff" onclick="tabClick(this.id)">XML</td>
             <td class="tabmax">
               <button onclick="discard()">Discard</button>
               <button onclick="save()">Save XML</button>
               <button id="fakeload">Load XML</button>
               <input type="file" id="load" style="display: none;"/>
-              <!--button class="launch" onclick="runJS()">Run Program</button-->
+              <button class ="btn btn-success" id="cb_cf_flash_btn">Run on Arduino</button>
             </td>
           </tr>
         </table>
@@ -291,6 +303,39 @@ function init(blockly) {
         <!--pre id="content_python"></pre-->
         <div id="content_xml">
           <textarea id="textarea_xml" readonly></textarea>
+        </div>
+        
+        
+        <div id="content_codebender">
+            
+            <h2>
+            <img src="//codebender.cc/images/codebender_hq_medium.png" />
+            codebender</h2> 
+            
+            <label for="cb_cf_boards">Board type</label>
+            <select id="cb_cf_boards"></select>
+        
+            <button class="btn btn-success" id="cb_cf_verify_btn" >Verify Code</button>
+            <br />
+            <label for="cb_cf_boards">Port</label>
+            <select id="cb_cf_ports"></select>
+            <br />
+            <button class ="btn btn-success" id="cb_cf_flash_btn">Run on Arduino</button>
+        <!--
+            <select id="cb_cf_programmers"> </select>
+        
+            <button class="btn" id="cb_cf_flash_with_prog_btn"></button>
+        
+            <select id="cb_cf_baud_rates"></select>
+        -->
+            <button class="btn" id="cb_cf_serial_monitor_connect">Open Serial Monitor</button>
+        
+        
+            <div id="cb_cf_serial_monitor"></div>
+        
+            <p id="cb_cf_operation_output"></p>
+
+        
         </div>
       </td>
     </tr>

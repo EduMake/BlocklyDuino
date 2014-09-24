@@ -1,15 +1,30 @@
+
+$(document).ready(function(){
+    compilerflasher = new compilerflasher(function(){
+      var code = Blockly.Generator.workspaceToCode('Arduino');
+      console.log("code =", code);
+      return {"sketch.ino": code};
+    
+    });
+});
+
+
+
 /**
  * Execute the user's code.
  * Just a quick and dirty eval.  No checks for infinite loops, etc.
  */
 function runJS() {
-  var code = Blockly.Generator.workspaceToCode('JavaScript');
   try {
     eval(code);
   } catch (e) {
     alert('Program error:\n' + e);
   }
 }
+
+
+
+
 
 /**
  * Backup code blocks to localStorage.
